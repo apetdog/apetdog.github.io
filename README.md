@@ -8,7 +8,7 @@ We are designing products that shape society.
 
 We're on the hunt for awesome people to join our crew. If you're up for an adventure and want to be part of something great, just hit the button below to get the ball rolling.
 
-[![Join our crew](/assets/images/join.svg)](mailto:logeast@outlook.com)
+[![Join our crew](/assets/images/join.svg)](mailto:logeast@outlook.com?subject=Join%20the%20Crew&body=Hi%2C%0A%0AI%27m%20interested%20in%20joining%20your%20team.%20Please%20find%20my%20resume%20attached.%0A%0AThanks%2C%0A%3CYour%20Name%3E)
 
 Fill in your details, attach your resume, and tell us why you'd be a perfect fit. We can't wait to get to know you!
 
