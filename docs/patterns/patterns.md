@@ -1,7 +1,7 @@
 ---
 title: Patterns
 layout: default
-nav_order: 2.1
+nav_order: 2
 has_children: true
 ---
 
