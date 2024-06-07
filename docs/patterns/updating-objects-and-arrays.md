@@ -5,7 +5,11 @@ parent: Patterns
 nav_order: 1
 ---
 
+1. TOC
+{:toc}
+
 # 更安全的更新对象和数组
+{: .no_toc }
 
 在 React 驱动的前端项目中，我们推荐采用在没有 mutation 的前提下更新对象和数组。
 
