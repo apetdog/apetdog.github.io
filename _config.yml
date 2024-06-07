@@ -21,10 +21,6 @@ aux_links:
 # Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
 nav_enabled: true
 
-# Enable or disable the side/mobile menu globally
-# Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
-nav_enabled: false
-
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -42,8 +38,3 @@ gh_edit_repository: "https://github.com/apetdog/apetdog.github.io" # the github 
 gh_edit_branch: "main" # the branch that your docs is served from
 # gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
-
-plugins:
-  - jekyll-seo-tag
-  - jekyll-github-metadata
-  - jekyll-include-cache
