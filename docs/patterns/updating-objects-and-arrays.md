@@ -5,13 +5,17 @@ parent: Patterns
 nav_order: 1
 ---
 
-1. TOC
-{:toc}
-
 # 更安全的更新对象和数组
 {: .no_toc }
 
 在 React 驱动的前端项目中，我们推荐采用在没有 mutation 的前提下更新对象和数组。
+{: .fs-6 .fw-300 }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## 模式：将 state 视为只读的，将对象视为不可变的
 
@@ -24,7 +28,7 @@ nav_order: 1
 - [React Docs: 更新 state 中的对象](https://zh-hans.react.dev/learn/updating-objects-in-state)
 - [React Docs: 更新 state 中的数组](https://zh-hans.react.dev/learn/updating-arrays-in-state)
 
-具体来说，你应该**把所有存放在 state 中的 JavaScript 对象都视为只读的**。
+具体来说，我们应该**把所有存放在 state 中的 JavaScript 对象都视为只读的**。
 
 ```js
 const [position, setPosition] = useState({
@@ -157,7 +161,26 @@ setArtists(
 
 要替换一个元素，请使用 map 创建一个新数组。
 
+```js
+const initialCounters = [
+  0, 0, 0
+];
 
+const [counters, setCounters] = useState(
+  initialCounters
+);
+
+// ✅ 推荐的做法，使用 map 语法
+const nextCounters = counters.map((c, i) => {
+  if (i === index) {
+    // 递增被点击的计数器数值
+    return c + 1;
+  } else {
+    return c;
+  }
+});
+setCounters(nextCounters);
+```
 
 ### 使用 `...` 展开运算和 `slice()` 来向数组特定位置插入元素
 
@@ -167,9 +190,9 @@ const [artists, setArtists] = useState(
 );
 
 const nextArtists = [
-  // 插入点之前的元素：
+  // 插入点之前的元素
   ...artists.slice(0, insertAt),
-  // 新的元素：
+  // 新的元素
   { id: nextId++, name: name },
   // 插入点之后的元素：
   ...artists.slice(insertAt),
@@ -178,9 +201,22 @@ const nextArtists = [
 
 ## 模式：创建拷贝值来更新数组内部的对象
 
+当更新一个嵌套的 state 时，我们需要从想要更新的地方创建拷贝值，一直这样，直到顶层。
 
+```js
+setMyList(myList.map(artwork => {
+  if (artwork.id === artworkId) {
+    // 创建包含变更的*新*对象
+    return { ...artwork, seen: nextSeen };
+  } else {
+    // 没有变更
+    return artwork;
+  }
+}));
+```
 
 ## 模式：使用 Immer 编写简洁的更新逻辑
 
 [Immer（德语为：always）](https://immerjs.github.io/immer)是一个小型包，可让我们以更方便的方式使用不可变状态。在 React 中可以使用 [use-immer](https://github.com/immerjs/use-immer)。
 
+这是因为我们并不是在直接修改原始的 state，而是在修改 Immer 提供的一个特殊的 `draft` 对象。同理，我们也可以为 `draft` 的内容使用 `push()` 和 `pop()` 这些会直接修改原值的方法。
