@@ -5,7 +5,9 @@ parent: Patterns
 nav_order: 1
 ---
 
-在 React 驱动的前端项目中，我们推荐采用如下的模式来确保更安全的更新对象和数组。
+# 更安全的更新对象和数组
+
+在 React 驱动的前端项目中，我们推荐采用在没有 mutation 的前提下更新对象和数组。
 
 ## 模式：将 state 视为只读的，将对象视为不可变的
 
@@ -71,3 +73,110 @@ setPerson({
   [e.target.name]: e.target.value, // 同时处理多个字段
 });
 ```
+
+`...` 展开语法本质是“浅拷贝”，因此我们需要多次使用展开语法来更新一个嵌套属性。
+
+```js
+const [person, setPerson] = useState({
+  firstName: 'Docs',
+  lastName: 'Apetdog',
+  email: 'docs@apetdog.com',
+  artwork: {
+    title: 'Logo',
+    type: 'symbol',
+    image: 'https://apetdog.github.io/assets/images/logo.svg',
+  }
+});
+
+// ✅ 推荐做法
+setPerson({
+  ...person,
+  artwork: {
+    ...person.artwork,
+    type: 'art', // 更新 type 的值
+  }
+});
+```
+
+这虽然看起来有点冗长，但对于很多情况都能有效地解决问题。
+
+## 模式：永远以返回一个新数组的方式来更新数组
+
+下面是常见数组操作的参考表。当操作 React state 中的数组时，我们需要避免使用左列的方法，而首选右列的方法：
+
+|  | 避免使用 (会改变原始数组) | 推荐使用 (会返回一个新数组） |
+| --- | --- | --- |
+| 添加元素 | `push`，`unshift` | `concat`，`[...arr]` 展开语法|
+| 删除元素 | `pop`，`shift`，`splice` | `filter`，`slice`|
+| 替换元素 | `splice`，`arr[i] = ...` 赋值 | `map` |
+| 排序 | `reverse`，`sort` | 先将数组复制一份 |
+
+### 使用 `...` 展开运算来向数组中添加元素
+
+使用展开操作就可以完成 push() 和 unshift() 的工作，将新元素添加到数组的末尾和开头。
+
+```js
+const [artists, setArtists] = useState([]);
+
+// ❌ 错误的做法，直接修改数组
+onClick={() => {
+  artists.push({
+    id: nextId++,
+    name: name,
+  });
+};
+
+// ✅ 推荐的做法，使用展开语法
+setArtists([
+  ...artists, // 新数组包含原数组的所有元素
+  { id: nextId++, name: name } // 并在末尾添加了一个新的元素
+]);
+// or
+setArtists([
+  { id: nextId++, name: name },
+  ...artists // 将原数组中的元素放在末尾
+]);
+```
+
+### 使用 `filter` 过滤元素来从数组中删除元素
+
+创建一个新的数组，该数组由那些 ID 与 artists.id 不同的 artists 组成。
+
+```js
+// ✅ 推荐的做法，使用 filter 语法
+setArtists(
+  artists.filter(a => a.id !== artist.id)
+);
+```
+
+### 使用 `map` 来替换数组中的元素
+
+要替换一个元素，请使用 map 创建一个新数组。
+
+
+
+### 使用 `...` 展开运算和 `slice()` 来向数组特定位置插入元素
+
+```js
+const [artists, setArtists] = useState(
+  initialArtists
+);
+
+const nextArtists = [
+  // 插入点之前的元素：
+  ...artists.slice(0, insertAt),
+  // 新的元素：
+  { id: nextId++, name: name },
+  // 插入点之后的元素：
+  ...artists.slice(insertAt),
+];
+```
+
+## 模式：创建拷贝值来更新数组内部的对象
+
+
+
+## 模式：使用 Immer 编写简洁的更新逻辑
+
+[Immer（德语为：always）](https://immerjs.github.io/immer)是一个小型包，可让我们以更方便的方式使用不可变状态。在 React 中可以使用 [use-immer](https://github.com/immerjs/use-immer)。
+
