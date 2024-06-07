@@ -4,33 +4,24 @@ layout: home
 nav_order: 1
 ---
 
-This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
+We are designing products that shape society.
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
+## Join our crew
 
-More specifically, the created site:
+We're on the hunt for awesome people to join our crew. If you're up for an adventure and want to be part of something great, just hit the button below to get the ball rolling.
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+[![Join our crew](/assets/images/join.svg)](mailto:logeast@outlook.com?subject=Join%20Our%20Crew&body=Hi%2C%0A%0AI%27m%20interested%20in%20joining%20your%20team.%20Please%20find%20my%20resume%20attached.%0A%0AThanks%2C%0A%3CYour%20Name%3E)
 
-Other than that, you're free to customize sites that you create with this template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+Fill in your details, attach your resume, and tell us why you'd be a perfect fit. We can't wait to get to know you!
 
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
+## Contributing
 
-To get started with creating a site, simply:
+We accept different types of contributions, including some that don't require you to write a single line of code.
 
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
+## License
 
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md#hosting-your-docs-from-an-existing-project-repo) in the template README.
+This Github product documentation in the assets, content, code and data folders are licensed under [CC0 1.0 Universal](./LICENSE).
 
-----
+## Thanks 💜
 
-[^1]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
-
-[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
-[GitHub Pages]: https://docs.github.com/en/pages
-[README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
-[Jekyll]: https://jekyllrb.com
-[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
-[use this template]: https://github.com/just-the-docs/just-the-docs-template/generate
+Thanks for all your contributions and efforts towards improving the Apetdog documentation. We thank you for being part of our ✨ community ✨!
