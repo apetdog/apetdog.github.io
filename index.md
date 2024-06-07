@@ -6,7 +6,7 @@ nav_order: 1
 
 We are designing products that shape society.
 
-<button class="btn btn-purple js-toggle-dark-mode">Toggle to dark mode</button>
+<button class="btn btn-purple js-toggle-dark-mode">Toggle to the dark side</button>
 
 <script>
 const toggleDarkMode = document.querySelector('.js-toggle-dark-mode');
@@ -14,7 +14,7 @@ const toggleDarkMode = document.querySelector('.js-toggle-dark-mode');
 jtd.addEvent(toggleDarkMode, 'click', function(){
   if (jtd.getTheme() === 'dark') {
     jtd.setTheme('light');
-    toggleDarkMode.textContent = 'Toggle to dark mode';
+    toggleDarkMode.textContent = 'Toggle to the dark side';
   } else {
     jtd.setTheme('dark');
     toggleDarkMode.textContent = 'Return to the light side';
